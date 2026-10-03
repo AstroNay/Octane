@@ -1,58 +1,49 @@
-name: Feature Request
-description: Suggest a new feature or improvement
-title: "[Feature]: "
+name: Feature Idea
+description: A new idea that isn't scoped yet (turn it into a Task once it's planned)
+title: "[Idea]: "
 labels: ["type:feature", "needs:triage"]
 body:
   - type: textarea
-    id: problem
-    attributes:
-      label: What problem does this solve?
-      placeholder: "Right now players can’t…"
-    validations:
-      required: true
-
-  - type: textarea
     id: idea
     attributes:
-      label: Your proposed solution
-      placeholder: "Add a /duel command that…"
+      label: The idea
+      description: What would the player do or see?
     validations:
       required: true
 
   - type: textarea
-    id: alternatives
+    id: why
     attributes:
-      label: Alternatives you considered
+      label: Why it's worth it
+      description: What problem it solves or which pillar it serves (RPG first, a town worth walking, solo-friendly, fair competition, sized for one dev).
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References and inspiration
+      description: Games, screenshots, Kanban updates, Discord threads.
     validations:
       required: false
 
   - type: dropdown
-    id: area
+    id: stage
     attributes:
-      label: Area
+      label: When it might fit
       options:
-        - bot-commands
-        - events
-        - economy
-        - vehicles
-        - crew/guilds
-        - inventory/items
-        - admin/moderation
-        - dashboard
-        - api/backend
-        - data/db
-        - not sure
+        - Alpha
+        - Beta
+        - Early Access
+        - Post-EA update
+        - Not sure
     validations:
       required: true
 
-  - type: dropdown
-    id: priority
+  - type: textarea
+    id: risks
     attributes:
-      label: Priority (your best guess)
-      options:
-        - p3 (nice-to-have)
-        - p2
-        - p1
-        - p0 (urgent)
+      label: Risks and open questions
+      description: Licensing, age rating, scope, server cost, balance.
     validations:
-      required: true
+      required: false

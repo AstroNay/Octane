@@ -1,85 +1,121 @@
 name: Bug Report
-description: Something isn’t working in OctaneRPG
+description: Something is broken in OctaneRPG
 title: "[Bug]: "
 labels: ["type:bug", "needs:triage"]
 body:
-  - type: dropdown
-    id: platform
+  - type: markdown
     attributes:
-      label: Where did this happen?
-      options:
-        - Discord bot
-        - Web dashboard
-        - API (developer)
-        - Other / not sure
+      value: |
+        Internal tracker. In-game reports from the bug button arrive in this same format.
+        Triage sets stack:*, sys:*, prio:* and the milestone.
+
+  - type: input
+    id: build
+    attributes:
+      label: Build version
+      description: Shown on the main menu (e.g. 0.2.0-alpha). Use "Editor" for Play mode.
+      placeholder: 0.2.0-alpha
     validations:
       required: true
 
   - type: dropdown
-    id: area
+    id: where
     attributes:
-      label: Area
+      label: Where
       options:
-        - bot-commands
-        - events
-        - economy
-        - vehicles
-        - crew/guilds
-        - inventory/items
-        - admin/moderation
-        - dashboard
-        - api/backend
-        - data/db
-        - ux-copy
-        - not sure
+        - Unity game
+        - API / server
+        - Website (octanerpg.com)
+        - Discord bot (legacy)
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: system
+    attributes:
+      label: System
+      options:
+        - Economy (store, scrapyard, lottery, rewards)
+        - Inventory / gear / parts
+        - Vehicles / garage / upgrades
+        - Racing
+        - Jobs / crime / heat
+        - Crew
+        - Phone apps
+        - Story / dialogue / onboarding
+        - World / scenes / interactions
+        - UI / HUD / settings
+        - Audio
+        - Accounts / login / linking
+        - Events / car meets
+        - Not sure
     validations:
       required: true
 
   - type: textarea
     id: what_happened
     attributes:
-      label: What happened?
-      description: Describe the bug clearly.
-      placeholder: "I used /race and it returned an error…"
+      label: What happened
+      placeholder: Opened the Scrapyard with 3 parts selected and the total showed 0 coins.
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: What did you expect to happen?
-      placeholder: "It should have…"
+      label: What should have happened
     validations:
       required: true
 
   - type: textarea
-    id: repro
+    id: steps
     attributes:
       label: Steps to reproduce
-      description: Numbered steps are best.
       placeholder: |
-        1. Run /command
-        2. Choose X
-        3. Observe Y
-    validations:
-      required: true
-
-  - type: textarea
-    id: screenshots
-    attributes:
-      label: Screenshots / logs
-      description: Paste screenshots or error text (remove personal info).
+        1. ...
+        2. ...
+        3. ...
     validations:
       required: false
 
   - type: dropdown
-    id: severity
+    id: frequency
     attributes:
-      label: Severity (your best guess)
+      label: How often
       options:
-        - cosmetic
-        - minor
-        - major
-        - critical
+        - Every time
+        - Sometimes
+        - Once
     validations:
       required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: Blocks progress or loses data = critical.
+      options:
+        - Cosmetic
+        - Minor (annoying, has a workaround)
+        - Major (feature broken)
+        - Critical (blocks progress, loses items or currency, crashes)
+    validations:
+      required: true
+
+  - type: input
+    id: account
+    attributes:
+      label: Player name / account
+      description: Helps look up server logs. No passwords or tokens.
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Player.log excerpt / screenshots
+      description: "%USERPROFILE%\\AppData\\LocalLow\\<company>\\OctaneRPG\\Player.log (last 50-100 lines around the problem)"
+      render: shell
+    validations:
+      required: false

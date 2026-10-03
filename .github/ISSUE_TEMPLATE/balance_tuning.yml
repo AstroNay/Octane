@@ -1,43 +1,52 @@
 name: Balance / Tuning
-description: Economy, rewards, risk, progression tuning ideas
+description: Economy, rewards, odds or progression tuning
 title: "[Balance]: "
-labels: ["type:balance", "needs:triage"]
+labels: ["type:balance", "sys:economy", "needs:triage"]
 body:
   - type: dropdown
-    id: subsystem
+    id: system
     attributes:
-      label: Subsystem
+      label: System
       options:
-        - races
-        - jobs
-        - loot/items
-        - XP/progression
-        - police/heat
-        - events
-        - other
+        - Coins / store / scrapyard prices
+        - Rewards (daily, weekly, Chibi GP, challenges)
+        - Lottery / gear draw odds
+        - Junkyard loot / inventory weight
+        - Racing difficulty / payouts / classes
+        - Jobs / crime / heat
+        - XP / leveling
+        - Crew (bank, donations, upgrades)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: What feels off
+      description: What you saw in play, with numbers if you have them.
     validations:
       required: true
 
   - type: textarea
     id: current
     attributes:
-      label: What feels off today?
-      placeholder: "Jobs pay too much compared to races…"
+      label: Current values
+      description: game_config keys, table rows or constants (e.g. game_config.inventory.capacity = 36).
+    validations:
+      required: false
+
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed change
     validations:
       required: true
 
   - type: textarea
-    id: suggestion
+    id: measure
     attributes:
-      label: Suggested change
-      placeholder: "Reduce X by 20% OR increase risk by adding…"
-    validations:
-      required: true
-
-  - type: textarea
-    id: evidence
-    attributes:
-      label: Evidence (optional)
-      description: Screenshots, rough math, examples.
+      label: How we'll know it worked
+      description: E.g. "a new player reaches class C in about 3 hours of play".
     validations:
       required: false

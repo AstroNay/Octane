@@ -1,0 +1,80 @@
+name: Task (agent-ready)
+description: Planned work, written so a Code session can pick it up cold
+title: "[Task]: "
+labels: ["needs:triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for planned features, enhancements, content and chores. After creating,
+        set type:*, stack:*, sys:*, size:*, prio:* and the milestone, then remove needs:triage.
+        A Code session works only inside "Scope: in"; anything else it finds goes in a comment.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One or two sentences on what changes for the player.
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: The problem, playtest note or plan item this comes from (link the Workplan/Road to EA section or issue).
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      value: |
+        **In:**
+        -
+
+        **Out (not part of this issue):**
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: start
+    attributes:
+      label: Where to start
+      description: Repos, files, endpoints, scenes, tables, docs (PROGRESS.md section, design doc).
+      placeholder: |
+        - OctaneAPI: src/retro/retro-....service.ts
+        - Unity: Assets/Scripts/UI/....cs, Tile_GarageDistrict.unity
+        - docs/PROGRESS.md: Phase E, E3
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ]
+        - [ ] Tests pass (npm test / npm run test:int) where the API changed
+        - [ ] No console errors; checked in Play mode (and a Windows build if input/build-related)
+        - [ ] PROGRESS.md updated, including manual editor steps and deploy notes
+    validations:
+      required: true
+
+  - type: textarea
+    id: decisions
+    attributes:
+      label: Decisions / open questions
+      description: Mark anything the session must ask before building with [ASK].
+    validations:
+      required: false
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      placeholder: "Blocked by #..., relates to #..."
+    validations:
+      required: false
